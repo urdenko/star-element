@@ -1,6 +1,6 @@
 {
   "name": "@urdenko/star-element",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Stars UI element",
   "main": "dist/index.js",
   "types": "dist/dts/index.d.ts",
