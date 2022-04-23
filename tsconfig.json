@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "target": "ES2019",
+      "module": "esnext",
+      "strict": true,
+      "esModuleInterop": true,
+      "outDir": "./dist/",
+      "moduleResolution": "Node",
+      "declaration": true,
+      "declarationDir": "./dts",
+      "experimentalDecorators": true
+    },
+    "exclude": ["./dist/"],
+    "include": ["**/*"]   
+}

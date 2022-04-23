@@ -1,0 +1,68 @@
+/*
+ * Анонос CSS переменных и их значений по-умолчанию
+ * Просто берешь и применяешь в проекте 
+ *
+ * --se-bg: rgba(0,0,0,0)
+ * --se-borderColor: #bbb
+ * --se-borderWidth: 1px
+ * --se-borderRadius: 5px
+ * --se-starBgColor: rgba(255, 219, 119, 0.4)
+ * --se-starBorderColor: rgba(34, 49, 63, 0.4)
+ * --se-selectStarBgColor: rgba(255, 219, 119, 1)
+ * --se-selectStarBorderColor: rgba(34, 49, 63, 1)
+ */
+
+%active-star {
+  .star-fill {
+    fill: var(--se-selectStarBgColor, rgba(255, 219, 119, 1));
+  }
+
+  .star-border {
+    fill: var(--se-selectStarBorderColor, rgba(34, 49, 63, 1));
+  }
+}
+
+%inactive-star {
+  .star-fill {
+    fill: var(--se-starBgColor, rgba(255, 219, 119, 0.4));
+    transition: 200ms fill ease-in;
+  }
+
+  .star-border {
+    fill: var(--se-starBorderColor, rgba(34, 49, 63, 0.4));
+    transition: 200ms fill ease-in;
+  }
+}
+
+:host {
+  border: var(--se-borderWidth, 1px) solid var(--se-borderColor, #bbb);
+  border-radius: var(--se-borderRadius, 5px);
+  display: inline-flex;
+  background: var(--se-bg, rgba(0, 0, 0, 0));
+}
+
+:host(:hover) {
+  .star {
+    @extend %active-star;
+  }
+}
+
+.star {
+  width: 0.6em;
+  height: 0.6em;
+  padding: calc(0.2em - var(--se-borderWidth, 1px));
+
+  & + .star {
+    padding-left: 0.2em;
+  }
+
+  &.select {
+    @extend %active-star;
+  }
+
+  @extend %inactive-star;
+
+  &:hover ~ .star {
+    @extend %inactive-star;
+  }
+}
